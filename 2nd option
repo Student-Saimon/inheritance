@@ -1,0 +1,47 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Student student = new("Saimon", "Colegio De Montalban");
+        Teacher teacher = new("Mr. Lagerson", "Mathematics");
+        Admin admin = new("Ms. Maricar", "Registrar Office");
+
+        student.Speak(); student.Study();
+        Console.WriteLine();
+        teacher.Speak(); teacher.Teach();
+        Console.WriteLine();
+        admin.Manage(); admin.Eat();
+    }
+}
+
+class Person
+{
+    private string name;
+    public Person(string name) => this.name = name;
+    protected string Name => name;
+    public void Speak() => Console.WriteLine($"{name} is speaking");
+    public void Eat() => Console.WriteLine($"{name} is eating");
+}
+
+class Student : Person
+{
+    private string school;
+    public Student(string name, string school) : base(name) => this.school = school;
+    public void Study() => Console.WriteLine($"{Name} is studying at {school}");
+}
+
+class Teacher : Person
+{
+    private string subject;
+    public Teacher(string name, string subject) : base(name) => this.subject = subject;
+    public void Teach() => Console.WriteLine($"{Name} is teaching {subject}");
+}
+
+class Admin : Person
+{
+    private string faculty;
+    public Admin(string name, string faculty) : base(name) => this.faculty = faculty;
+    public void Manage() => Console.WriteLine($"{Name} is managing at the {faculty}");
+}
